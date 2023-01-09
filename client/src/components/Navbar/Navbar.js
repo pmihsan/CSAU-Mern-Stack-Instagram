@@ -1,6 +1,8 @@
 import {BsPlusLg} from "react-icons/bs";
 
-function Navbar() {
+function Navbar(props) {
+
+    let {setShowModal} = props;
     return (
       <div className={"navbar"}>
           <div className={"logo"}>
@@ -17,7 +19,7 @@ function Navbar() {
               <div><img src={"heart.png"} alt={"heart-icon"}/></div>
               <div><img src={"send.png"} alt={"send-icon"}/></div>
           </div>
-          <button type={"button"} className={"post-btn"}><BsPlusLg/> Add new post</button>
+          <button type={"button"} className={"post-btn"}  onClick={() => setShowModal(true)}><BsPlusLg/> Add new post</button>
       </div>
     );
 }

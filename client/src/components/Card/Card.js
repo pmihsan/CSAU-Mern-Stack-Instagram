@@ -1,15 +1,17 @@
 import {RiDeleteBinFill} from "react-icons/ri";
 import {BsPencilFill} from "react-icons/bs";
 
-function Card(props){
+const Card = ({details}) => {
+
+    let { location, name, image} = details;
     return (
         <div className={"card"}>
-            <img className={"card-img"} alt={"card-images"} src={props.imgSrc}/>
+            <img className={"card-img"} alt={"card-images"} src={image}/>
             <div className={"card-body"}>
-                <img src={props.userIcon} alt={"user-icon"} id={"user"}/>
+                <img src="./panda-avatar.png" alt={"user-icon"} id={"user"}/>
                 <div className={"card-desc"}>
-                    <div className={"card-title"}>{props.name}</div>
-                    <div className={"card-text"}>{props.text}</div>
+                    <div className={"card-title"}>{name}</div>
+                    <div className={"card-text"}>{location}</div>
                 </div>
                 <div className={"icons"}>
                     <RiDeleteBinFill id={"trash"}/>
