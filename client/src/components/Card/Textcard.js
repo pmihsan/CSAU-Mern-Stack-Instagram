@@ -3,7 +3,7 @@ import axios from "axios";
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { BsPencilFill } from 'react-icons/bs';
 
-function Card({ details, setFormType, setShowModal, setEditPost, setLoadPosts }) {
+function Textcard({ details, setFormType, setShowModal, setEditPost, setLoadPosts }) {
 
    const baseUrl = `http://localhost:5000/api/posts/${details._id}`;
    const handleDelete = () => {
@@ -22,8 +22,11 @@ function Card({ details, setFormType, setShowModal, setEditPost, setLoadPosts })
    }
 
    return (
-      <div className="card">
-         <img className="card-img" src={details.image} alt="Card" />
+      <div className="card ">
+         <div className="card-img textcard-body">
+            <div className="card-title">{details.title}</div>
+            <div className="card-text">{details.caption}</div>
+         </div>
          <div className="card-body">
             <img src={'./panda-avatar.png'} alt="User" id="user" />
             <div className="card-desc">
@@ -32,15 +35,15 @@ function Card({ details, setFormType, setShowModal, setEditPost, setLoadPosts })
             </div>
             <div className="icons">
                <RiDeleteBinFill id="trash" onClick={handleDelete} />
-               <BsPencilFill id="edit"  onClick={() => { 
-                  setEditPost(details); 
+               <BsPencilFill id="edit" onClick={() => { 
+                  setEditPost(details);
                   setFormType("Edit"); 
                   setShowModal(true); 
-               }}  />
+               }} />
             </div>
          </div>
       </div>
    );
 }
 
-export default Card;
+export default Textcard;
