@@ -9,8 +9,8 @@ const cors = require('cors');
 
 // Database connection
 let router;
-console.log("mongodb://127.0.0.1:27017/csaudb")
-mongoose.connect("mongodb://127.0.0.1:27017/csaudb", {
+console.log("mongodb://host.docker.internal:27017/csaudb")
+mongoose.connect("mongodb://host.docker.internal:27017/csaudb", { // Provide Corresponding machine IP
     useNewUrlParser:true,
     // useFindAndModify:false,
     useUnifiedTopology: true

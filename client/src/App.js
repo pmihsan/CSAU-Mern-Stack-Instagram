@@ -14,7 +14,7 @@ import Editform from './components/Form/Editform';
 
 function App() {
 
-    const baseUrl = "http://localhost:5000/api/posts";
+    const baseUrl = "http://host.docker.internal:5000/api/posts"; // Provide Corresponding machine IP
 
     const [showModal, setShowModal] = useState(false);
     const [posts, setPosts] = useState([]);
