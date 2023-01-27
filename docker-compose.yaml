@@ -1,0 +1,29 @@
+version: "3.8"
+
+# List of containers
+services:
+  mongo-db:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+
+    # Specify volumes and env variable for mongo db here
+
+  express-server:
+      build: ./server
+      ports:
+        - "5000:5000"
+      # depends_on means it will start our express-server container once mongodb container is up and running.
+      depends_on:
+        - mongo-db
+
+  react-js:
+    build: ./client
+    ports:
+      - "3000:3000"
+    # Allow interactive mode
+    stdin_open: true
+    tty: true
+    # It will start our react-js container once express-server container is up and running.
+    depends_on:
+      - express-server
