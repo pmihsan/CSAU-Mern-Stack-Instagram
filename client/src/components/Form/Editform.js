@@ -5,7 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 
 function Editform({ cur, status, details, setFormType, setLoadPosts }) {
 
-   const baseUrl = `http://localhost:5000/api/posts/${details._id}`;
+   const baseUrl = `http://host.docker.internal:5000/api/posts/${details._id}`;
 
    const [postType, setPostType] = useState(details.postType);
    const [name, setName] = useState(details.name);
@@ -25,9 +25,10 @@ function Editform({ cur, status, details, setFormType, setLoadPosts }) {
       })
       .then((response) => {
          if(response.status === 200) {
-            alert("Post edit success!");
+            // alert("Post edit success!");
          }
          console.log(response);
+         setLoadPosts((prev) => prev + 1);
       })
       .catch((err) => {
          console.log(err);
@@ -35,7 +36,6 @@ function Editform({ cur, status, details, setFormType, setLoadPosts }) {
       });
       status(!cur);
       setFormType("Add");
-      setLoadPosts((prev) => prev + 1);
    }
 
    return (

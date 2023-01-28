@@ -5,20 +5,20 @@ import { BsPencilFill } from 'react-icons/bs';
 
 function Textcard({ details, setFormType, setShowModal, setEditPost, setLoadPosts }) {
 
-   const baseUrl = `http://localhost:5000/api/posts/${details._id}`;
+   const baseUrl = `http://host.docker.internal:5000/api/posts/${details._id}`;
    const handleDelete = () => {
       axios.delete(baseUrl)
       .then((response) => {
          if(response.status === 200) {
-            alert("Post deletion success!");
+            // alert("Post deletion success!");
          }
          console.log(response);
+         setLoadPosts((prev) => prev + 1);
       })
       .catch((err) => {
          console.log(err);
          alert("Something went wrong :(");
       });
-      setLoadPosts((prev) => prev + 1);
    }
 
    return (

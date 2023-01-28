@@ -5,7 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 
 function Postform({ cur, status, setLoadPosts }) {
 
-   const baseUrl = "http://localhost:5000/api/posts";
+   const baseUrl = "http://host.docker.internal:5000/api/posts";
 
    const [postType, setPostType] = useState('image');
    const [name, setName] = useState('');
@@ -25,16 +25,16 @@ function Postform({ cur, status, setLoadPosts }) {
       })
       .then((response) => {
          if(response.status === 201) {
-            alert("Post creation success!");
+            // alert("Post creation success!");
          }
          console.log(response);
+         setLoadPosts((prev) => prev + 1);
       })
       .catch((err) => {
          console.log(err);
          alert("Something went wrong :(");
       });
       status(!cur);
-      setLoadPosts((prev) => prev + 1);
    }
 
    return (
