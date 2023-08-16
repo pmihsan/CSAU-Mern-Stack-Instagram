@@ -3,9 +3,10 @@ import axios from "axios";
 import { ImCross } from 'react-icons/im';
 import { FaCheck } from 'react-icons/fa';
 
-function Editform({ cur, status, details, setFormType, setLoadPosts }) {
+import { MACHINE_IP } from '../../constants';
 
-   const baseUrl = `http://host.docker.internal:5000/api/posts/${details._id}`;
+function Editform({ cur, status, details, setFormType, setLoadPosts }) {
+   const baseUrl = `http://${MACHINE_IP}:5000/api/posts/${details._id}`;
 
    const [postType, setPostType] = useState(details.postType);
    const [name, setName] = useState(details.name);

@@ -3,9 +3,10 @@ import axios from "axios";
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { BsPencilFill } from 'react-icons/bs';
 
-function Textcard({ details, setFormType, setShowModal, setEditPost, setLoadPosts }) {
+import { MACHINE_IP } from '../../constants';
 
-   const baseUrl = `http://host.docker.internal:5000/api/posts/${details._id}`;
+function Textcard({ details, setFormType, setShowModal, setEditPost, setLoadPosts }) {
+   const baseUrl = `http://${MACHINE_IP}:5000/api/posts/${details._id}`;
    const handleDelete = () => {
       axios.delete(baseUrl)
       .then((response) => {

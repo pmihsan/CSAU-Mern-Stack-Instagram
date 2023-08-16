@@ -12,9 +12,12 @@ import Textcard from './components/Card/Textcard';
 import Postform from './components/Form/Postform';
 import Editform from './components/Form/Editform';
 
-function App() {
+// CONSTANTS
+import { MACHINE_IP } from './constants';
 
-    const baseUrl = "http://host.docker.internal:5000/api/posts"; // Provide Corresponding machine IP
+
+function App() {
+    const baseUrl = `http://${MACHINE_IP}:5000/api/posts`; // Provide Corresponding machine IP
 
     const [showModal, setShowModal] = useState(false);
     const [posts, setPosts] = useState([]);

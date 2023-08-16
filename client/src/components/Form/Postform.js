@@ -3,9 +3,10 @@ import axios from "axios";
 import { ImCross } from 'react-icons/im';
 import { FaCheck } from 'react-icons/fa';
 
-function Postform({ cur, status, setLoadPosts }) {
+import { MACHINE_IP } from '../../constants';
 
-   const baseUrl = "http://host.docker.internal:5000/api/posts";
+function Postform({ cur, status, setLoadPosts }) {
+   const baseUrl = `http://${MACHINE_IP}:5000/api/posts`;
 
    const [postType, setPostType] = useState('image');
    const [name, setName] = useState('');

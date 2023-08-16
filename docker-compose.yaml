@@ -1,16 +1,22 @@
 version: "3.8"
 
+# Define named volumes
+volumes:
+  mongo-data:
+
 # List of containers
 services:
   mongo-db:
     image: "mongo"
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
     # Specify volumes and env variable for mongo db here
 
   express-server:
-      build: ./server
+      build: ./server 
       ports:
         - "5000:5000"
       # depends_on means it will start our express-server container once mongodb container is up and running.

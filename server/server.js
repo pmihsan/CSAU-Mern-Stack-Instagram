@@ -6,11 +6,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Database connection
 let router;
-console.log("mongodb://host.docker.internal:27017/csaudb")
-mongoose.connect("mongodb://host.docker.internal:27017/csaudb", { // Provide Corresponding machine IP
+// console.log("mongodb://host.docker.internal:27017/csaudb")
+mongoose.connect(`mongodb://${process.env.MACHINE_IP}:27017/csaudb`, {  // Provide Corresponding machine IP
     useNewUrlParser:true,
     // useFindAndModify:false,
     useUnifiedTopology: true
@@ -28,7 +30,7 @@ mongoose.connect("mongodb://host.docker.internal:27017/csaudb", { // Provide Cor
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: [`http://${process.env.MACHINE_IP}:3000`, 'http://localhost:3000'] // Provide Corresponding machine IP
 }));
 
 const PORT =  5000;        //  PORT will be populuated when deployed to Heroku
