@@ -26,7 +26,7 @@ services:
   react-js:
     build: ./client
     ports:
-      - "3000:3000"
+      - "3000:80"
     # Allow interactive mode
     stdin_open: true
     tty: true
